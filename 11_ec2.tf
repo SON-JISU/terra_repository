@@ -20,7 +20,7 @@ data "aws_ami" "amzn" {
 resource "aws_instance" "sonjisu_weba" {
   ami = "ami-04e8dfc09b22389ad"
   instance_type = "t2.micro"
-  key_name = "sonjisu1-key"
+  key_name = "sonjisu1-key" 
   availability_zone = "ap-northeast-2a"
   private_ip = "10.0.0.11"
   subnet_id = aws_subnet.sonjisu_puba.id
@@ -42,4 +42,8 @@ resource "aws_eip" "sonjisu_weba_ip" {
     aws_internet_gateway.sonjisu_ig
   ]
 
+}
+
+output "public_ip" {
+  value = aws_instance.sonjisu_weba.public_ip
 }
