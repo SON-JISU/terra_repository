@@ -37,3 +37,23 @@ resource "aws_subnet" "sonjisu_pric" {
     "Name" = "sonjisu-pric"
   }
 }
+
+# 가용 영역 a - private DB subnet
+resource "aws_subnet" "sonjisu_pridba" {
+  vpc_id = aws_vpc.sonjisu_vpc.id
+  cidr_block = "10.0.4.0/24"
+  availability_zone = "ap-northeast-2a"
+  tags = {
+    "Name" = "sonjisu-pridba"
+  }
+}
+
+# 가용 영역 c - private DB subnet
+resource "aws_subnet" "sonjisu_pridbc" {
+  vpc_id = aws_vpc.sonjisu_vpc.id
+  cidr_block = "10.0.5.0/24"
+  availability_zone = "ap-northeast-2c"
+  tags = {
+    "Name" = "sonjisu-pridbc"
+  }
+}
